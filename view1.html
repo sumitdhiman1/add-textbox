@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8" />
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+
+<form action = "next.php" method="post" name = "form" enctype = "multipart/form-data" onsubmit= "return validate()"  >
+
+<input id="btnAdd" type="button" value="Add" class = "btn btn-info" />
+
+</br><div id="a"  ></div>
+
+<input name = "submit" type="submit" value="submit" class = "btn btn-info"  />
+
+<div id = "error">
+
+</div>
+
+
+</form>
+
+<script>
+
+var numberIncr = 1;
+    $(document).ready(function() {
+    	 
+  $("#btnAdd").click(function() {
+     $("#a").append('<div class="con"><input style = "margin:10px 0;" type="text" class="rr" id="text'+numberIncr+'" name = "hello[]"  value="" />'
+	 +'<span id = "hey'+numberIncr+'"></span>' +'<input type="text" id="input'+numberIncr+'" name = "hell1[]" value="" />'
+	 +'<input type="file" id="file'+numberIncr+'" name = "file[]" value="" />'
+	 +'<input type="button" class="btnRemove" id ="button'+numberIncr+'"  value="Remove"/></div>');
+    numberIncr++;
+  });
+
+ 
+  $('body').on('click','.btnRemove',function() {
+    $(this).parent('div.con').remove()
+   
+  });
+});
+
+function validate(){
+	
+
+     
+   
+     var numberIncr = 100;
+	  for(var i=1;i<numberIncr;i++){
+        document.getElementById("error").innerHTML = "";
+	var x = document.getElementById("text" + i).value;
+        var y = document.getElementById("input" + i).value;
+        var z = document.getElementById("file" + i).value;
+
+		
+
+	if(x == "" &&  y!="" ){
+		document.getElementById("error").innerHTML = "left" + i + "field is required";
+		
+		document.getElementById("error").style.color = "red";
+
+		return false;
+	
+	}
+
+
+
+}
+	
+}
+
+
+
+
+</script>
+
+
+</body>
+</html>
